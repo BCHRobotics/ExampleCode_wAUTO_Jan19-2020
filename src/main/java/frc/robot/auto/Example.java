@@ -63,12 +63,13 @@ public class Example {
          *  NavX gyro will correct.
          * 
          * The first variable is the setpoint (the distance we would like to acheve)
-         * The secound is the speed of the robot from (-1 to 1)
-         * The third is the range (+/- the setpoint we want to acheeve)
-         * The fourth is the range timeout (the ammount of time we want to be in the range)
-         * The fith is the command timout (the max amount of time you want this command to run)
+         * The secound is the encoder speed of the robot from (-1 to 1)
+         * The third is the gyro speed of the robot from (-1 to 1)
+         * The fourth is the range (+/- the setpoint we want to acheeve)
+         * The fith is the range timeout (the ammount of time we want to be in the range)
+         * The sixth is the command timout (the max amount of time you want this command to run)
          */
-        m_autoCommands.straightDrive(60, 0.5, 0.5, 250, 5500);
+        m_autoCommands.straightDrive(60, 0.5, 0.5, 0.5, 250, 5500);
     }
 
     public void exampleCommandD(){

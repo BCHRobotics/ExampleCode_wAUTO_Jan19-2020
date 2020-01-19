@@ -77,7 +77,7 @@ public class AutoCommands {
             this.derivative = (this.error - this.previous_error) / 0.02;
             this.rcw = this.kP * this.error + this.kI * this.intergral + this.kD * this.derivative;
 
-            mDrivetrain.arcade(rcw, 0);
+            mDrivetrain.arcade(rcw * speed, 0);
         }
     }
 
@@ -120,7 +120,7 @@ public class AutoCommands {
             this.derivative = (this.error - this.previous_error) / 0.02;
             this.rcw = this.kP * this.error + this.kI * this.intergral + this.kD * this.derivative;
 
-            mDrivetrain.arcade(0, rcw);
+            mDrivetrain.arcade(0, rcw * speed);
         }
     }
 
@@ -128,12 +128,13 @@ public class AutoCommands {
 	 * Drive the robot straight using the navX to keep straight
 	 *
 	 * @param setpoint The distance you would like to move (inches)
-	 * @param speed Speed of the robot (-1 to 1)
+	 * @param speedENCO Encoder speed of the robot (-1 to 1)
+     * @param speedGYRO Gyro speed of the robot (-1 to 1)
      * @param range The range of error you would like to be within (inches)
      * @param rangeTimeMs The amount of time you would like to be within the range (ms)
      * @param timeoutMs The max amount of time you want this command to run (ms)
 	 */
-    public void straightDrive(double setpoint, double speed, double range, double rangeTimeMs, double timeoutMs){
+    public void straightDrive(double setpoint, double speedENCO, double speedGYRO, double range, double rangeTimeMs, double timeoutMs){
 
         this.kP = RobotMap.P_DRIVETRAIN;
         this.kI = RobotMap.I_DRIVETRAIN;
@@ -174,7 +175,7 @@ public class AutoCommands {
             this.derivative2 = (this.error2 - this.previous_error2) / 0.02;
             this.rcw2 = this.kP2 * this.error2 + this.kI2 * this.intergral2 + this.kD2 * this.derivative2;
 
-            mDrivetrain.arcade(rcw, rcw2);
+            mDrivetrain.arcade(rcw * speedENCO, rcw2 * speedGYRO);
         }
     }
 
@@ -230,7 +231,7 @@ public class AutoCommands {
             this.derivative2 = (this.error2 - this.previous_error2) / 0.02;
             this.rcw2 = this.kP2 * this.error2 + this.kI2 * this.intergral2 + this.kD2 * this.derivative2;
 
-            mDrivetrain.arcade(rcw, rcw2);
+            mDrivetrain.arcade(rcw * speedENCO, rcw2 * speedGYRO);
         }
     }
 
